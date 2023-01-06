@@ -1,20 +1,10 @@
 extends Button
 
 @onready var task_manager = get_parent()
-# Create an InputEvent node to handle user input
-#@onready var input_event = InputEvent.new()
-@onready var newButton : Button = Button.new()
-# Create a new LineEdit node
-@onready var line_edit = LineEdit.new()
-@onready var width = size.x
-@onready var task = preload("res://task.tscn")
-@onready var task_button = preload("res://task_button.tscn")
-@onready var new_task
-@onready var task_dictionary : Dictionary
-@onready var task_array : Array
-@onready var task_button_dictionary : Dictionary
-@onready var task_button_array : Array
-@onready var task_counter : int = 1
+@onready var line_edit : LineEdit = LineEdit.new()
+@onready var width : float = size.x
+@onready var width_offset : float = 50
+
 
 func _ready():
 	pressed.connect(self._button_pressed)
@@ -35,7 +25,7 @@ func _button_pressed():
 		_create_acceptdialog_missing_name()
 		return
 
-	new_task = task_manager.create_task(line_edit.text)
+	var new_task = task_manager.create_task(line_edit.text)
 	task_manager.create_task_button(line_edit.text, new_task)
 	line_edit.clear()
 
