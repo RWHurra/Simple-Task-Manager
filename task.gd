@@ -4,19 +4,17 @@ signal new_task_name(new_task_name)
 signal due_date(due_date)
 
 @onready var task_container : VBoxContainer = $VBoxContainer
+
 @onready var task_name = $VBoxContainer/LineEdit
-@onready var task_name_old = $VBoxContainer/LineEdit.text
+@onready var task_name_current
 
 @onready var task_description = $VBoxContainer/TextEdit
-@onready var task_description_old = $VBoxContainer/TextEdit.text
+@onready var task_description_current
 
 @onready var task_due_date = $VBoxContainer/LineEdit2
-@onready var task_due_date_old = $VBoxContainer/LineEdit2.text
+@onready var task_due_date_current
 
 @onready var task_done = $VBoxContainer/CheckBox
-
-@onready var task_button_name : String = str(name) + "_button"
-@onready var task_button : Button = get_tree().get_current_scene().find_child(task_button_name, true, false)
 
 @onready var isDone : bool = false
 
@@ -24,6 +22,7 @@ signal due_date(due_date)
 func _ready():
 	get_ok_button().pressed.connect(self._ok_button_pressed)
 	get_cancel_button().pressed.connect(self._cancel_button_pressed)
+	self.focus_entered.connect(_save_current_task_data)
 	task_done.toggled.connect(self._toggle_task_done)
 	task_name.text = name
 
@@ -33,6 +32,11 @@ func _toggle_task_done(button_pressed):
 	else:
 		isDone = false
 	print("task isDOne is now: ", isDone)
+
+func _save_current_task_data():
+	task_name_current = task_name.text
+	task_description_current = task_description.text
+	task_due_date_current = task_due_date.text
 
 func _update_task_name(updated_task_name : String):
 	task_name.text = updated_task_name
@@ -44,9 +48,9 @@ func _ok_button_pressed():
 	
 func _cancel_button_pressed():
 	print("cancel")
-	task_name.text = task_name_old
-	task_description.text = task_description_old
-	task_due_date.text = task_due_date_old
+	task_name.text = task_name_current
+	task_description.text = task_description_current
+	task_due_date.text = task_due_date_current
 
 func get_due_date():
 	return task_due_date.text

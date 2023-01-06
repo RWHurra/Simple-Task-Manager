@@ -37,7 +37,7 @@ func create_task_button(button_text : String, task):
 	var new_button = task_button.instantiate()
 	new_button.set_related_task(task)
 	new_button.text = button_text
-	new_button.name = button_text
+	new_button.name = str(button_text) + "_button"
 	add_child(new_button)
 	task_button_dictionary = {
 		"related_task_id": task_counter,
