@@ -18,11 +18,21 @@ signal due_date(due_date)
 @onready var task_button_name : String = str(name) + "_button"
 @onready var task_button : Button = get_tree().get_current_scene().find_child(task_button_name, true, false)
 
+@onready var isDone : bool = false
+
 
 func _ready():
 	get_ok_button().pressed.connect(self._ok_button_pressed)
 	get_cancel_button().pressed.connect(self._cancel_button_pressed)
+	task_done.toggled.connect(self._toggle_task_done)
 	task_name.text = name
+
+func _toggle_task_done(button_pressed):
+	if button_pressed and isDone == false:
+		isDone = true
+	else:
+		isDone = false
+	print("task isDOne is now: ", isDone)
 
 func _update_task_name(updated_task_name : String):
 	task_name.text = updated_task_name
