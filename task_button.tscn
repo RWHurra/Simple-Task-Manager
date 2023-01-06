@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://7tknnpa1jk1k"]
+
+[ext_resource type="Script" path="res://task_button.gd" id="1_vm5rg"]
+
+[node name="task_button" type="Button"]
+script = ExtResource("1_vm5rg")

@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://cctp8p4h3lmxj"]
+
+[ext_resource type="Script" path="res://simple_task_manager.gd" id="1_hcjdi"]
+[ext_resource type="Script" path="res://Add task.gd" id="1_upnbi"]
+
+[node name="Simple task manager" type="VBoxContainer"]
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 86.0
+offset_bottom = 50.0
+script = ExtResource("1_hcjdi")
+
+[node name="Add task" type="Button" parent="."]
+offset_right = 76.0
+offset_bottom = 31.0
+text = "Add task"
+script = ExtResource("1_upnbi")
