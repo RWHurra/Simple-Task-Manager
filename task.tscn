@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://cx5y14lvldj8l"]
+[gd_scene load_steps=3 format=3 uid="uid://cx5y14lvldj8l"]
 
 [ext_resource type="Script" path="res://task.gd" id="1_6ysyd"]
+[ext_resource type="Script" path="res://DeleteTaskButton.gd" id="2_4ccn6"]
 
 [node name="Task" type="ConfirmationDialog"]
 script = ExtResource("1_6ysyd")
@@ -29,3 +30,8 @@ caret_blink_interval = 0.5
 [node name="CheckBox" type="CheckButton" parent="VBoxContainer"]
 layout_mode = 2
 text = "Done"
+
+[node name="DeleteTaskButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Delete"
+script = ExtResource("2_4ccn6")
