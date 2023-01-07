@@ -8,3 +8,4 @@ Functionality:
 -- edit description
 -- edit due date
 -- edit done
+- delete task
