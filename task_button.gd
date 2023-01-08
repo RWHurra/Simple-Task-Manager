@@ -20,9 +20,16 @@ func _update_button_text(new_button_text : String):
 	text = new_button_text
 	
 func _update_button_color(due_date):
-	if due_date == Time.get_date_string_from_system():
+	if due_date == str(Time.get_date_string_from_system()):
 		print(due_date)
-		self.add_theme_color_override("font_color", Color.CORAL)
+		
+		var new_stylebox_normal = get_theme_stylebox("normal").duplicate()
+		new_stylebox_normal.bg_color = Color.DARK_ORANGE
+		add_theme_stylebox_override("normal", new_stylebox_normal)
+		
+		var new_stylebox_hover = get_theme_stylebox("hover").duplicate()
+		new_stylebox_hover.bg_color = Color.ORANGE
+		add_theme_stylebox_override("hover", new_stylebox_hover)
 
 func show_task():
 	get_related_task().show()
