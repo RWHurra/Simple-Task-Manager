@@ -1,6 +1,6 @@
 extends ConfirmationDialog
 
-signal new_task_name(new_task_name)
+signal updated_task(new_task_name, new_task_due_date, new_task_done_status)
 signal due_date(due_date)
 
 @onready var task_container : VBoxContainer = $VBoxContainer
@@ -42,9 +42,7 @@ func _update_task_name(updated_task_name : String):
 	task_name.text = updated_task_name
 
 func _ok_button_pressed():
-	emit_signal("new_task_name", task_name.text)
-	emit_signal("due_date", task_due_date.text)
-	print("ok")
+	emit_signal("updated_task", task_name.text, task_due_date.text, isDone)
 	
 func _cancel_button_pressed():
 	print("cancel")

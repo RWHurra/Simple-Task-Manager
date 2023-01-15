@@ -6,12 +6,6 @@ extends Button
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pressed.connect(self._show_delete_dialog)
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
 
 func _show_delete_dialog():
 	var delete_dialog : ConfirmationDialog = ConfirmationDialog.new()

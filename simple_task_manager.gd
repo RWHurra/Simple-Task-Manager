@@ -8,13 +8,6 @@ extends VBoxContainer
 @onready var task_button_array : Array
 @onready var task_counter : int = 1
 
-func _ready():
-	pass # Replace with function body.
-
-
-func _process(_delta):
-	pass
-
 func create_task(task_name : String):
 	var new_task = task.instantiate()
 	new_task.name = task_name

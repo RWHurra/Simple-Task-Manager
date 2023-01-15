@@ -12,19 +12,21 @@ func _ready():
 	# Set the placeholder text of the LineEdit
 	line_edit.placeholder_text = "Enter task name"
 	line_edit.expand_to_text_length = true
-	line_edit.position = Vector2(width + 50, 0)
+	line_edit.position = Vector2(width + width_offset, 0)
 
 func _process(_delta):
 	width = size.x
-	line_edit.position = Vector2(width + 10, 0)
+	line_edit.position = Vector2(width + width_offset, 0)
 
 func _button_pressed():
 	# GUARD CLAUSE: if new task has no name
 	if line_edit.text == null || line_edit.text == "":
-		print("Task must have a name")
 		_create_acceptdialog_missing_name()
 		return
-
+		
+	_create_task()
+	
+func _create_task():
 	var new_task = task_manager.create_task(line_edit.text)
 	task_manager.create_task_button(line_edit.text, new_task)
 	line_edit.clear()
