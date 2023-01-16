@@ -26,11 +26,11 @@ func _delete_task():
 	tasks.erase(task)
 	task.queue_free()
 
-func _delete_related_button(task):
+func _delete_related_button(task_to_delete):
 	var buttons = task_manager.get_task_buttons()
 	print(buttons)
 	for button in buttons:
-		if task.name == str(button.name).replace("_button", ""):
+		if task_to_delete.name == str(button.name).replace("_button", ""):
 			buttons.erase(button)
 			button.queue_free()
 

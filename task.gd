@@ -42,8 +42,21 @@ func _update_task_name(updated_task_name : String):
 	task_name.text = updated_task_name
 
 func _ok_button_pressed():
+	if task_name.text == null || task_name.text == "":
+		_create_acceptdialog_missing_name()
+		return
 	emit_signal("updated_task", task_name.text, task_due_date.text, isDone)
-	
+
+func _create_acceptdialog_missing_name():
+	var accept_dialog = AcceptDialog.new()
+	# set the title and message of the AcceptDialog
+	accept_dialog.title = "❗Warning"
+	accept_dialog.dialog_text = "The task needs a name!"
+	accept_dialog.position = Vector2(100, 100)
+	# show the AcceptDialog
+	add_child(accept_dialog)
+	accept_dialog.visible = true
+
 func _cancel_button_pressed():
 	print("cancel")
 	task_name.text = task_name_current

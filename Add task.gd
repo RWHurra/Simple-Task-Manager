@@ -34,8 +34,8 @@ func _create_task():
 func _create_acceptdialog_missing_name():
 	var accept_dialog = AcceptDialog.new()
 	# set the title and message of the AcceptDialog
-	accept_dialog.title = "Warning"
-	accept_dialog.dialog_text = "This is a warning message. You did not entered a task name!"
+	accept_dialog.title = "❗Warning"
+	accept_dialog.dialog_text = "You did not entered a task name!"
 	accept_dialog.position = Vector2(100, 100)
 	# show the AcceptDialog
 	add_child(accept_dialog)
