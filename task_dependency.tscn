@@ -1,0 +1,41 @@
+[gd_scene load_steps=3 format=3 uid="uid://chvfnx538eq7t"]
+
+[ext_resource type="Script" path="res://task_dependency.gd" id="1_4ammm"]
+[ext_resource type="Script" path="res://add_task_dependency.gd" id="2_rvfm3"]
+
+[node name="Task dependency" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_4ammm")
+
+[node name="GraphEdit" type="GraphEdit" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 52.0
+offset_right = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+scroll_offset = Vector2(-1151, -596)
+
+[node name="Close" type="Button" parent="."]
+offset_left = 30.0
+offset_top = 12.0
+offset_right = 80.0
+offset_bottom = 43.0
+text = "Close"
+
+[node name="Add task" type="Button" parent="."]
+offset_left = 90.0
+offset_top = 12.0
+offset_right = 166.0
+offset_bottom = 43.0
+text = "Add task"
+script = ExtResource("2_rvfm3")
+
+[connection signal="pressed" from="Close" to="." method="_on_close_pressed"]
+[connection signal="pressed" from="Add task" to="Add task" method="_on_pressed"]

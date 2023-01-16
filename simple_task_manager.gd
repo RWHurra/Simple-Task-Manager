@@ -2,6 +2,7 @@ extends VBoxContainer
 
 @onready var task = preload("res://task.tscn")
 @onready var task_button = preload("res://task_button.tscn")
+@onready var task_dependency_scene = preload("res://task_dependency.tscn")
 @onready var task_dictionary : Dictionary
 @onready var task_array : Array
 @onready var task_button_dictionary : Dictionary
@@ -45,3 +46,13 @@ func get_tasks():
 	
 func get_task_buttons():
 	return task_button_array
+
+
+func _on_setup_task_dependency_pressed():
+	print("task dep pressed")
+	var task_dependency = task_dependency_scene.instantiate()
+	print(task_dependency)
+	add_sibling(task_dependency)
+	hide()
+	task_dependency.show()
+#	get_tree().change_scene_to_packed(task_dependency_scene)

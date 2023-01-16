@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://qnxg5wwbdip6"]
+
+[ext_resource type="Script" path="res://Add task list dependency.gd" id="1_dee7p"]
+
+[node name="Add task list dependency" type="ConfirmationDialog"]
+position = Vector2i(50, 50)
+size = Vector2i(200, 300)
+script = ExtResource("1_dee7p")
+
+[node name="ItemList" type="ItemList" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+item_count = 1
+item_0/text = ""
